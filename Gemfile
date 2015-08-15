@@ -43,3 +43,8 @@ group :development, :test do
   gem 'spring'
 end
 
+gem 'haml-rails'
+gem 'pg'
+gem 'omniauth-rlauth'
+gem 'rspec-rails'
+gem 'httparty'

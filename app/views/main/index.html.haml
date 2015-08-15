@@ -1,0 +1,5 @@
+%h2= t(".database_query")
+= form_tag query_path do
+  = label_tag :callsign_query, t(".callsign") + ":"
+  = text_field_tag :callsign_query
+  = submit_tag t(".query")

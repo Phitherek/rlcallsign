@@ -53,4 +53,16 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+  post '/query', to: "main#query"
+  post '/api/query', to: "api#query"
+  get '/show', to: "main#show"
+  get '/new', to: "main#new"
+  post '/create', to: "main#create"
+  get '/edit', to: "main#edit"
+  put '/update', to: "main#update"
+  delete '/destroy', to: "main#destroy"
+  get '/auth/:provider/callback', to: "main#omniauth_callback", as: :omniauth_callback
+  get '/logout', to: "main#logout"
+
+  root to: "main#index"
 end

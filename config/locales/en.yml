@@ -21,3 +21,27 @@
 
 en:
   hello: "Hello world"
+  subtitle: "RadioLog callsign database"
+  not_logged_in: "You are not logged in"
+  login: "Login via RLAuth"
+  logged_in_as: "You are logged in via RLAuth as %{callsign}"
+  logout: "Logout"
+  created_by: "Created by Phitherek_ SO9PH in 2015."
+  radiolog_tools: "This application is a part of the RadioLog Tools."
+  back: "Back"
+  new_info: "Add info to the database"
+  show_info: "Show your database info"
+  edit_info: "Edit your database info"
+  destroy_info: "Remove your info from database"
+  main:
+    index:
+      callsign: Callsign
+      query: Query
+      database_query: Database query
+    query:
+      query_results_for: "Query results for %{query}"
+      no_results: "Query returned no results!"
+      callsign: "Callsign:"
+      name: "Name:"
+      qth: "QTH:"
+      qth_locator: "QTH Locator:"

@@ -1,0 +1,36 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title RLCallsign
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+  %body
+    %header
+      %h1 RLCallsign
+      %p= t(:subtitle)
+    - if flash[:notice]
+      .flash.notice
+        = flash[:notice]
+    - if flash[:error]
+      .flash.error
+        = flash[:error]
+    .userbox
+      - if @user.nil?
+        %p= t(:not_logged_in)
+        = link_to t(:login), "/auth/rlauth"
+      - else
+        %p= t(:logged_in_as, callsign: @user.callsign)
+        - if @user.callsign_info_id.nil?
+          = link_to t(:new_info), new_path
+        - else
+          = link_to t(:show_info), show_path
+          = link_to t(:edit_info), edit_path
+          = link_to t(:destroy_info), predestroy_path
+        = link_to t(:logout), logout_path
+    .main
+      = yield
+    %footer
+      %p.created_by= t(:created_by)
+      %p.radiolog= t(:radiolog_tools)

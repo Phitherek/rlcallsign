@@ -22,7 +22,7 @@
         = link_to t(:login), "/auth/rlauth"
       - else
         %p= t(:logged_in_as, callsign: @user.callsign)
-        - if @user.callsign_info_id.nil?
+        - if @user.callsign_info.nil?
           = link_to t(:new_info), new_path
         - else
           = link_to t(:show_info), show_path

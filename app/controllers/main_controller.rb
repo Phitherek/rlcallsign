@@ -40,7 +40,22 @@ class MainController < ApplicationController
     end
 
     def omniauth_callback
-
+        if !auth_hash.nil?
+            @user = RemoteUser.find_by_callsign(auth_hash.info.callsign)
+            if @user.nil?
+                @user = RemoteUser.create(callsign: auth_hash.info.callsign, email: auth_hash.info.email)
+                @user.reload
+            end
+            @session = RemoteSession.new
+            @session.token = auth_hash.credentials.token
+            @session.token_expires = Time.at(auth_hash.credentials.expires_at)
+            @session.refresh_token = auth_hash.credentials.refresh_token
+            @session.remote_user = @user
+            @session.save!
+            @user.save!
+            session['remote_session_token'] = @session.token
+        end
+        redirect_to root_path
     end
 
     def logout

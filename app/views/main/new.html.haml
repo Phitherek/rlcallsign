@@ -1,5 +1,5 @@
 %h2= t(".new_info")
-= form_for @info do |f|
+= form_for @info, url: create_path do |f|
   .row
     = f.label :name
     = f.text_field :name

@@ -74,7 +74,7 @@ en:
     predestroy:
       destroy_info: Remove your callsign info
       delete_from_database: Delete from database
-  active_record:
+  activerecord:
     models:
       remote_user:
         one: Remote user

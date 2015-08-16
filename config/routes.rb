@@ -60,6 +60,7 @@ Rails.application.routes.draw do
   post '/create', to: "main#create"
   get '/edit', to: "main#edit"
   put '/update', to: "main#update"
+  get '/predestroy', to: "main#predestroy"
   delete '/destroy', to: "main#destroy"
   get '/auth/:provider/callback', to: "main#omniauth_callback", as: :omniauth_callback
   get '/logout', to: "main#logout"

@@ -15,11 +15,11 @@ class ApiController < ApplicationController
     end
 
     def specific_query
-        u = RemoteUser.find_by_callsign(params[:query])
-        if !u.nil? && u.callsign_info.nil?
-            u = nil
+        @user = RemoteUser.find_by_callsign(params[:query])
+        if !@user.nil? && @user.callsign_info.nil?
+            @user = nil
         end
-        if u.nil?
+        if @user.nil?
             render json: {error: "notfound"}
         else
             render json: {info: {callsign: @user.callsign, name: @user.callsign_info.name, stationary_qth: @user.callsign_info.stationary_qth, stationary_qth_locator: @user.callsign_info.stationary_qth_locator, current_qth: (@user.callsign_info.current_qth.nil? || @user.callsign_info.current_qth.empty?) && (@user.callsign_info.current_qth_locator.nil? || @user.callsign_info.current_qth_locator.empty?) ? @user.callsign_info.stationary_qth : @user.callsign_info.current_qth, current_qth_locator: (@user.callsign_info.current_qth.nil? || @user.callsign_info.current_qth.empty?) && (@user.callsign_info.current_qth_locator.nil? || @user.callsign_info.current_qth_locator.empty?) ? @user.callsign_info.stationary_qth_locator : @user.callsign_info.current_qth_locator}}

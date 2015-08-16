@@ -29,6 +29,7 @@ en:
   created_by: "Created by Phitherek_ SO9PH in 2015."
   radiolog_tools: "This application is a part of the RadioLog Tools."
   back: "Back"
+  submit: "Submit"
   new_info: "Add info to the database"
   show_info: "Show your database info"
   edit_info: "Edit your database info"
@@ -36,8 +37,12 @@ en:
   errors:
     info_already_entered: "Your callsign info has already been entered to the database."
     error_while_saving: "There was error while saving callsign info to database"
+    info_not_entered: "Your callsign info has not been entered to the database yet."
+    error_while_destroying: "There was an error while destroying callsign info."
   success:
     info_created: "Callsign info created successfully!"
+    info_updated: "Callsign info updated successfully!"
+    info_destroyed: "Callsign info destroyed successfully!"
   main:
     index:
       callsign: Callsign
@@ -48,8 +53,48 @@ en:
       no_results: "Query returned no results!"
       callsign: "Callsign:"
       name: "Name:"
-      qth: "QTH:"
-      qth_locator: "QTH Locator:"
+      stationary_qth: "Stationary QTH:"
+      stationary_qth_locator: "Stationary QTH locator:"
+      current_qth: "Current QTH:"
+      current_qth_locator: "Current QTH locator:"
     new:
       new_info: New callsign info
       add_to_database: Add to database
+    show:
+      your_info: Your callsign info
+      name: Name
+      stationary_qth: Stationary QTH
+      stationary_qth_locator: Stationary QTH locator
+      current_qth: Current QTH
+      current_qth_locator: Current QTH locator
+      shown_current_qth: Shown current QTH
+      shown_current_qth_locator: Shown current QTH locator
+    edit:
+      edit_info: Edit your callsign info
+    predestroy:
+      destroy_info: Remove your callsign info
+      delete_from_database: Delete from database
+  active_record:
+    models:
+      remote_user:
+        one: Remote user
+        few: Remote users
+        other: Remote users
+      remote_session:
+        one: Remote session
+        few: Remote sessions
+        other: Remote sessions
+      callsign_info:
+        one: Callsign info
+        few: Callsign infos
+        other: Callsign infos
+    attributes:
+      remote_user:
+        callsign: Callsign
+        email: Email
+      callsign_info:
+        name: Name
+        stationary_qth: Stationary QTH
+        stationary_qth_locator: Stationary QTH locator
+        current_qth: Current QTH
+        current_qth_locator: Current QTH locator

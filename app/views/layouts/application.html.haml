@@ -10,6 +10,9 @@
     %header
       %h1 RLCallsign
       %p= t(:subtitle)
+    - if flash[:success]
+      .flash.success
+        = flash[:success]
     - if flash[:notice]
       .flash.notice
         = flash[:notice]

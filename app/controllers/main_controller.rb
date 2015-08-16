@@ -116,6 +116,6 @@ class MainController < ApplicationController
     end
 
     def info_params
-        params.require(:callsign_info).permit(:name, :stationary_qth, :stationary_qth_locator, :current_qth, :current_qth_locator)
+        params.require(:callsign_info).permit(:name, :stationary_qth, :stationary_qth_locator, :current_qth, :current_qth_locator, :remote_user_id)
     end
 end

@@ -8,7 +8,7 @@ class MainController < ApplicationController
     end
 
     def query
-        @users = RemoteUser.like(params[:callsign_query]).with_info
+        @users = RemoteUser.like(params[:callsign_query]).with_info.order(:callsign)
     end
 
     def new

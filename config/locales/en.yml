@@ -33,6 +33,11 @@ en:
   show_info: "Show your database info"
   edit_info: "Edit your database info"
   destroy_info: "Remove your info from database"
+  errors:
+    info_already_entered: "Your callsign info has already been entered to the database."
+    error_while_saving: "There was error while saving callsign info to database"
+  success:
+    info_created: "Callsign info created successfully!"
   main:
     index:
       callsign: Callsign
@@ -45,3 +50,6 @@ en:
       name: "Name:"
       qth: "QTH:"
       qth_locator: "QTH Locator:"
+    new:
+      new_info: New callsign info
+      add_to_database: Add to database

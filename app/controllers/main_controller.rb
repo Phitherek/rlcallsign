@@ -13,6 +13,7 @@ class MainController < ApplicationController
 
     def new
         if !@user.callsign_info.nil?
+            flash[:error] = t("errors.info_already_entered")
             redirect_to edit_path
         end
         @info = CallsignInfo.new
@@ -20,12 +21,15 @@ class MainController < ApplicationController
 
     def create
         if !@user.callsign_info.nil?
+            flash[:error] = t("errors.info_already_entered")
             redirect_to edit_path
         end
         @info = CallsignInfo.create(info_params)
         if @info.new_record?
+            flash[:error] = t("errors.error_while_saving") + ": " + @info.errors.full_messages.join(", ")
             redirect_to new_path
         else
+            flash[:success] = t("success.info_created")
             redirect_to show_path
         end
     end

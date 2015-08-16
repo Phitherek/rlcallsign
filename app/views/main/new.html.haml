@@ -16,5 +16,6 @@
     = f.label :current_qth_locator
     = f.text_field :current_qth_locator
   .row
+    = f.hidden_field :remote_user_id, @user.id
     = f.submit t(".add_to_database")
 = link_to t(:back), root_path

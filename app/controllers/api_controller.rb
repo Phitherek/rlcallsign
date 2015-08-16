@@ -1,4 +1,6 @@
 class ApiController < ApplicationController
+    protect_from_forgery with: :null_session
+
     def query
         us = RemoteUser.like(params[:query]).with_infos.order(:callsign)
         if us.empty?

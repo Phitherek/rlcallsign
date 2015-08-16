@@ -1,7 +1,7 @@
 class MainController < ApplicationController
 
     before_filter :find_user
-    before_filter :user_only, only: [:new, :create, :show, :edit, :update, :destroy]
+    before_filter :user_only, only: [:new, :create, :show, :edit, :update, :predestroy, :destroy, :logout]
 
     def index
 
@@ -12,11 +12,22 @@ class MainController < ApplicationController
     end
 
     def new
-
+        if !@user.callsign_info.nil?
+            redirect_to edit_path
+        end
+        @info = CallsignInfo.new
     end
 
     def create
-
+        if !@user.callsign_info.nil?
+            redirect_to edit_path
+        end
+        @info = CallsignInfo.create(info_params)
+        if @info.new_record?
+            redirect_to new_path
+        else
+            redirect_to show_path
+        end
     end
 
     def show
@@ -98,5 +109,9 @@ class MainController < ApplicationController
 
     def user_only
         redirect_to root_path unless !@user.nil?
+    end
+
+    def info_params
+        params.require(:callsign_info).permit(:name, :stationary_qth, :stationary_qth_locator, :current_qth, :current_qth_locator)
     end
 end

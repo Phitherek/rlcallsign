@@ -1,0 +1,19 @@
+%h2= t(".new_info")
+= form_for @info do |f|
+  .row
+    = f.label :name
+    = f.text_field :name
+  .row
+    = f.label :stationary_qth
+    = f.text_field :stationary_qth
+  .row
+    = f.label :stationary_qth_locator
+    = f.text_field :stationary_qth_locator
+  .row
+    = f.label :current_qth
+    = f.text_field :current_qth
+  .row
+    = f.label :current_qth_locator
+    = f.text_field :current_qth_locator
+  .row
+    = f.submit t(".add_to_database")

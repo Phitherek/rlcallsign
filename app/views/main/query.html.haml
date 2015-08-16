@@ -7,13 +7,17 @@
       %tr
         %th= t(".callsign")
         %th= t(".name")
-        %th= t(".qth")
-        %th= t(".qth_locator")
+        %th= t(".stationary_qth")
+        %th= t(".stationary_qth_locator")
+        %th= t(".current_qth")
+        %th= t(".current_qth_locator")
     %tbody
       - @users.each do |u|
         %tr
           %th= u.callsign
           %th= u.callsign_info.name
-          %th= u.callsign_info.current_qth.nil? ? u.callsign_info.stationary_qth : u.callsign_info.current_qth
-          %th= u.callsign_info.current_qth_locator.nil? ? u.callsign_info.stationary_qth_locator : u.callsign_info.current_qth_locator
+          %th= u.callsign_info.stationary_qth
+          %th= u.callsign_info.stationary_qth_locator
+          %th= u.callsign_info.current_qth.nil? && u.callsign_info.current_qth_locator.nil? ? u.callsign_info.stationary_qth : u.callsign_info.current_qth
+          %th= u.callsign_info.current_qth.nil? && u.callsign_info.current_qth_locator.nil? ? u.callsign_info.stationary_qth_locator : u.callsign_info.current_qth_locator
 = link_to t(:back), root_path

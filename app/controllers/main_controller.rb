@@ -35,23 +35,54 @@ class MainController < ApplicationController
     end
 
     def show
-
+        if @user.callsign_info.nil?
+            flash[:error] = t("errors.info_not_entered")
+            redirect_to root_path
+        end
     end
 
     def edit
-
+        if @user.callsign_info.nil?
+            flash[:error] = t("errors.info_not_entered")
+            redirect_to new_path
+        end
+        @info = @user.callsign_info
     end
 
     def update
-
+        if @user.callsign_info.nil?
+            flash[:error] = t("errors.info_not_entered")
+            redirect_to new_path
+        end
+        @info = @user.callsign_info
+        if @info.update_attributes(info_params)
+            flash[:success] = t("success.info_updated")
+            redirect_to show_path
+        else
+            flash[:error] = t("errors.error_while_saving") + ": " + @info.errors.full_messages.join(", ")
+            redirect_to edit_path
+        end
     end
 
     def predestroy
-
+        if @user.callsign_info.nil?
+            flash[:error] = t("errors.info_not_entered")
+            redirect_to root_path
+        end
     end
 
     def destroy
-
+        if @user.callsign_info.nil?
+            flash[:error] = t("errors.info_not_entered")
+            redirect_to root_path
+        end
+        if @user.callsign_info.destroy
+            flash[:success] = t("success.info_destroyed")
+            redirect_to root_path
+        else
+            flash[:error] = t("errors.error_while_destroying")
+            redirect_to predestroy_path
+        end
     end
 
     def omniauth_callback

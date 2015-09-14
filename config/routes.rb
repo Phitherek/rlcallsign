@@ -56,6 +56,7 @@ Rails.application.routes.draw do
   post '/query', to: "main#query"
   post '/api/query', to: "api#query"
   post '/api/specific_query', to: "api#specific_query"
+  post "/api/update_current_qth", to: "api#update_current_qth"
   get '/show', to: "main#show"
   get '/new', to: "main#new"
   post '/create', to: "main#create"

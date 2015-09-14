@@ -52,4 +52,25 @@ class ApiController < ApplicationController
             end
         end
     end
+
+    def user_callsign_info
+        if params[:token].nil? || params[:token].empty?
+            render json: {error: "rlauthtokenrequired"}
+        else
+            res = HTTParty.post('https://rlauth.deira.phitherek.me/altapi/user_data', query: {token: params[:token]})
+            res = JSON.parse(res.body)
+            if !res['error'].nil?
+                render json: {error: "rlauth_#{res['error']}"}
+            else
+                @user = RemoteUser.find_by_callsign(res['user']['callsign'])
+                if @user.nil?
+                    render json: {error: "unauthorized"}
+                elsif @user.callsign_info.nil?
+                    render json: {error: "nocallsigninfo"}
+                else
+                    render json: {info: {callsign: @user.callsign, name: @user.callsign_info.name, stationary_qth: @user.callsign_info.stationary_qth, stationary_qth_locator: @user.callsign_info.stationary_qth_locator, current_qth: @user.callsign_info.current_qth, current_qth_locator: @user.callsign_info.current_qth_locator}}
+                end
+            end
+        end
+    end
 end

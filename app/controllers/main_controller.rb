@@ -105,7 +105,7 @@ class MainController < ApplicationController
     end
 
     def logout
-        HTTParty.post("https://rlauth.deira.phitherek.me/oauth/revoke?token=#{@session.token}")
+        HTTParty.post("https://rlauth.phitherek.me/oauth/revoke?token=#{@session.token}")
         @session.destroy
         session.delete('remote_session_token')
         redirect_to root_path
@@ -122,7 +122,7 @@ class MainController < ApplicationController
             @session = RemoteSession.find_by_token(session['remote_session_token'])
             if !@session.nil?
                 @user = @session.remote_user
-                @check = JSON.parse(HTTParty.get("https://rlauth.deira.phitherek.me/api/user_data?access_token=#{@session.token}").body || "{}")
+                @check = JSON.parse(HTTParty.get("https://rlauth.phitherek.me/api/user_data?access_token=#{@session.token}").body || "{}")
                 if @check.include?("status") && @check["status"] == "failure"
                     session['remote_session_token'] = nil
                     redirect_to '/auth/rlauth' and return

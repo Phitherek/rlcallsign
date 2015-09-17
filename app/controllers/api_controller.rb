@@ -30,7 +30,7 @@ class ApiController < ApplicationController
         if params[:token].nil? || params[:token].empty?
             render json: {error: "rlauthtokenrequired"}
         else
-            res = HTTParty.post('https://rlauth.deira.phitherek.me/altapi/user_data', query: {token: params[:token]})
+            res = HTTParty.post('https://rlauth.phitherek.me/altapi/user_data', query: {token: params[:token]})
             res = JSON.parse(res.body)
             if !res['error'].nil?
                 render json: {error: "rlauth_#{res['error']}"}
@@ -57,7 +57,7 @@ class ApiController < ApplicationController
         if params[:token].nil? || params[:token].empty?
             render json: {error: "rlauthtokenrequired"}
         else
-            res = HTTParty.post('https://rlauth.deira.phitherek.me/altapi/user_data', query: {token: params[:token]})
+            res = HTTParty.post('https://rlauth.phitherek.me/altapi/user_data', query: {token: params[:token]})
             res = JSON.parse(res.body)
             if !res['error'].nil?
                 render json: {error: "rlauth_#{res['error']}"}
